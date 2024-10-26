@@ -24,6 +24,7 @@ const ECommerce: React.FC = () => {
     dob: "",
   });
 
+  const STATIC_PASSWORD = "123456"; // Set your static password here
   const [accessGranted, setAccessGranted] = useState(false);
   const [inputPassword, setInputPassword] = useState("");
 
@@ -34,6 +35,7 @@ const ECommerce: React.FC = () => {
       alert("Incorrect password. Please try again.");
     }
   };
+
   useEffect(() => {
     if (id) {
       const fetchStaffData = async () => {
@@ -67,6 +69,7 @@ const ECommerce: React.FC = () => {
       fetchStaffData();
     }
   }, [id]);
+
   const [fileUri, setFileUri] = useState<string | null>(null);
 
   const [prevFileUri, setPrevFileUri] = useState<string | null>(null);
@@ -99,7 +102,6 @@ const ECommerce: React.FC = () => {
     }
   };
 
-
   useEffect(() => {
     const downloadFile = async () => {
       await downloadFromS3({
@@ -121,7 +123,9 @@ const ECommerce: React.FC = () => {
     return (
       <div className="flex flex-col items-center justify-center h-screen bg-gray-100 dark:bg-gray-900">
         <img src={Logo} alt="Logo" width={60} className="mb-6" />
-        <h2 className="text-xl font-bold mb-4 text-black dark:text-white">Enter Password</h2>
+        <h2 className="text-xl font-bold mb-4 text-black dark:text-white">
+          Enter Password
+        </h2>
         <input
           type="password"
           value={inputPassword}
@@ -168,7 +172,7 @@ const ECommerce: React.FC = () => {
                   Employee ID :-
                 </h4>
                 <span className="font-regular text-black dark:text-gray-400 ml-4">
-                {formData.employeeId ? formData.employeeId : '0'}
+                  {formData.employeeId ? formData.employeeId : "0"}
                 </span>
               </div>
 
