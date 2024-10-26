@@ -1,0 +1,13 @@
+{
+    "AppSyncApiName": "bilogic",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": false,
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "S3DeploymentBucket": "amplify-bilogic-staging-8e024-deployment",
+    "S3DeploymentRootKey": "amplify-appsync-files/67d71a33495b3b87e96a667c13671a32f6a9b941"
+}

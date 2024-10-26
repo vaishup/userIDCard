@@ -1,0 +1,494 @@
+type TheShifts @aws_iam @aws_api_key {
+  id: ID!
+  Location: String
+  duties: String
+  staffId: String
+  time: String
+  startTime: AWSDateTime
+  endTime: AWSDateTime
+  startDate: String
+  endDate: String
+  shiftstatus: String
+  userId: String
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type TheStaff @aws_iam @aws_api_key {
+  id: ID!
+  name: String
+  phoneNumber: String
+  email: String
+  DOB: String
+  photourl: String
+  isBiomatritcs: String
+  profileStatus: String
+  Location: String
+  IsActive: String
+  shiftIds: [String]
+  userId: String
+  latitude: String
+  longitude: String
+  employeeId: String
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type TheAdminStaffUser @aws_iam @aws_api_key {
+  id: ID!
+  name: String
+  phoneNumber: String
+  email: String
+  userType: String
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+input ModelStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelBooleanInput {
+  ne: Boolean
+  eq: Boolean
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelSubscriptionStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  in: [String]
+  notIn: [String]
+}
+
+input ModelSubscriptionIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  in: [Int]
+  notIn: [Int]
+}
+
+input ModelSubscriptionFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  in: [Float]
+  notIn: [Float]
+}
+
+input ModelSubscriptionBooleanInput {
+  ne: Boolean
+  eq: Boolean
+}
+
+input ModelSubscriptionIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  in: [ID]
+  notIn: [ID]
+}
+
+enum ModelAttributeTypes {
+  binary
+  binarySet
+  bool
+  list
+  map
+  number
+  numberSet
+  string
+  stringSet
+  _null
+}
+
+input ModelSizeInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelTheShiftsConnection @aws_api_key @aws_iam {
+  items: [TheShifts]!
+  nextToken: String
+}
+
+input ModelTheShiftsFilterInput {
+  id: ModelIDInput
+  Location: ModelStringInput
+  duties: ModelStringInput
+  staffId: ModelStringInput
+  time: ModelStringInput
+  startTime: ModelStringInput
+  endTime: ModelStringInput
+  startDate: ModelStringInput
+  endDate: ModelStringInput
+  shiftstatus: ModelStringInput
+  userId: ModelStringInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+  and: [ModelTheShiftsFilterInput]
+  or: [ModelTheShiftsFilterInput]
+  not: ModelTheShiftsFilterInput
+}
+
+type Query {
+  getTheShifts(id: ID!): TheShifts @aws_api_key @aws_iam
+  listTheShifts(filter: ModelTheShiftsFilterInput, limit: Int, nextToken: String): ModelTheShiftsConnection @aws_api_key @aws_iam
+  getTheStaff(id: ID!): TheStaff @aws_api_key @aws_iam
+  listTheStaffs(filter: ModelTheStaffFilterInput, limit: Int, nextToken: String): ModelTheStaffConnection @aws_api_key @aws_iam
+  getTheAdminStaffUser(id: ID!): TheAdminStaffUser @aws_api_key @aws_iam
+  listTheAdminStaffUsers(filter: ModelTheAdminStaffUserFilterInput, limit: Int, nextToken: String): ModelTheAdminStaffUserConnection @aws_api_key @aws_iam
+}
+
+input ModelTheShiftsConditionInput {
+  Location: ModelStringInput
+  duties: ModelStringInput
+  staffId: ModelStringInput
+  time: ModelStringInput
+  startTime: ModelStringInput
+  endTime: ModelStringInput
+  startDate: ModelStringInput
+  endDate: ModelStringInput
+  shiftstatus: ModelStringInput
+  userId: ModelStringInput
+  and: [ModelTheShiftsConditionInput]
+  or: [ModelTheShiftsConditionInput]
+  not: ModelTheShiftsConditionInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+}
+
+input CreateTheShiftsInput {
+  id: ID
+  Location: String
+  duties: String
+  staffId: String
+  time: String
+  startTime: AWSDateTime
+  endTime: AWSDateTime
+  startDate: String
+  endDate: String
+  shiftstatus: String
+  userId: String
+}
+
+input UpdateTheShiftsInput {
+  id: ID!
+  Location: String
+  duties: String
+  staffId: String
+  time: String
+  startTime: AWSDateTime
+  endTime: AWSDateTime
+  startDate: String
+  endDate: String
+  shiftstatus: String
+  userId: String
+}
+
+input DeleteTheShiftsInput {
+  id: ID!
+}
+
+type Mutation {
+  createTheShifts(input: CreateTheShiftsInput!, condition: ModelTheShiftsConditionInput): TheShifts @aws_api_key @aws_iam
+  updateTheShifts(input: UpdateTheShiftsInput!, condition: ModelTheShiftsConditionInput): TheShifts @aws_api_key @aws_iam
+  deleteTheShifts(input: DeleteTheShiftsInput!, condition: ModelTheShiftsConditionInput): TheShifts @aws_api_key @aws_iam
+  createTheStaff(input: CreateTheStaffInput!, condition: ModelTheStaffConditionInput): TheStaff @aws_api_key @aws_iam
+  updateTheStaff(input: UpdateTheStaffInput!, condition: ModelTheStaffConditionInput): TheStaff @aws_api_key @aws_iam
+  deleteTheStaff(input: DeleteTheStaffInput!, condition: ModelTheStaffConditionInput): TheStaff @aws_api_key @aws_iam
+  createTheAdminStaffUser(input: CreateTheAdminStaffUserInput!, condition: ModelTheAdminStaffUserConditionInput): TheAdminStaffUser @aws_api_key @aws_iam
+  updateTheAdminStaffUser(input: UpdateTheAdminStaffUserInput!, condition: ModelTheAdminStaffUserConditionInput): TheAdminStaffUser @aws_api_key @aws_iam
+  deleteTheAdminStaffUser(input: DeleteTheAdminStaffUserInput!, condition: ModelTheAdminStaffUserConditionInput): TheAdminStaffUser @aws_api_key @aws_iam
+}
+
+input ModelSubscriptionTheShiftsFilterInput {
+  id: ModelSubscriptionIDInput
+  Location: ModelSubscriptionStringInput
+  duties: ModelSubscriptionStringInput
+  staffId: ModelSubscriptionStringInput
+  time: ModelSubscriptionStringInput
+  startTime: ModelSubscriptionStringInput
+  endTime: ModelSubscriptionStringInput
+  startDate: ModelSubscriptionStringInput
+  endDate: ModelSubscriptionStringInput
+  shiftstatus: ModelSubscriptionStringInput
+  userId: ModelSubscriptionStringInput
+  createdAt: ModelSubscriptionStringInput
+  updatedAt: ModelSubscriptionStringInput
+  and: [ModelSubscriptionTheShiftsFilterInput]
+  or: [ModelSubscriptionTheShiftsFilterInput]
+}
+
+type Subscription {
+  onCreateTheShifts(filter: ModelSubscriptionTheShiftsFilterInput): TheShifts @aws_subscribe(mutations: ["createTheShifts"]) @aws_api_key @aws_iam
+  onUpdateTheShifts(filter: ModelSubscriptionTheShiftsFilterInput): TheShifts @aws_subscribe(mutations: ["updateTheShifts"]) @aws_api_key @aws_iam
+  onDeleteTheShifts(filter: ModelSubscriptionTheShiftsFilterInput): TheShifts @aws_subscribe(mutations: ["deleteTheShifts"]) @aws_api_key @aws_iam
+  onCreateTheStaff(filter: ModelSubscriptionTheStaffFilterInput): TheStaff @aws_subscribe(mutations: ["createTheStaff"]) @aws_api_key @aws_iam
+  onUpdateTheStaff(filter: ModelSubscriptionTheStaffFilterInput): TheStaff @aws_subscribe(mutations: ["updateTheStaff"]) @aws_api_key @aws_iam
+  onDeleteTheStaff(filter: ModelSubscriptionTheStaffFilterInput): TheStaff @aws_subscribe(mutations: ["deleteTheStaff"]) @aws_api_key @aws_iam
+  onCreateTheAdminStaffUser(filter: ModelSubscriptionTheAdminStaffUserFilterInput): TheAdminStaffUser @aws_subscribe(mutations: ["createTheAdminStaffUser"]) @aws_api_key @aws_iam
+  onUpdateTheAdminStaffUser(filter: ModelSubscriptionTheAdminStaffUserFilterInput): TheAdminStaffUser @aws_subscribe(mutations: ["updateTheAdminStaffUser"]) @aws_api_key @aws_iam
+  onDeleteTheAdminStaffUser(filter: ModelSubscriptionTheAdminStaffUserFilterInput): TheAdminStaffUser @aws_subscribe(mutations: ["deleteTheAdminStaffUser"]) @aws_api_key @aws_iam
+}
+
+type ModelTheStaffConnection @aws_api_key @aws_iam {
+  items: [TheStaff]!
+  nextToken: String
+}
+
+input ModelTheStaffFilterInput {
+  id: ModelIDInput
+  name: ModelStringInput
+  phoneNumber: ModelStringInput
+  email: ModelStringInput
+  DOB: ModelStringInput
+  photourl: ModelStringInput
+  isBiomatritcs: ModelStringInput
+  profileStatus: ModelStringInput
+  Location: ModelStringInput
+  IsActive: ModelStringInput
+  shiftIds: ModelStringInput
+  userId: ModelStringInput
+  latitude: ModelStringInput
+  longitude: ModelStringInput
+  employeeId: ModelStringInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+  and: [ModelTheStaffFilterInput]
+  or: [ModelTheStaffFilterInput]
+  not: ModelTheStaffFilterInput
+}
+
+input ModelTheStaffConditionInput {
+  name: ModelStringInput
+  phoneNumber: ModelStringInput
+  email: ModelStringInput
+  DOB: ModelStringInput
+  photourl: ModelStringInput
+  isBiomatritcs: ModelStringInput
+  profileStatus: ModelStringInput
+  Location: ModelStringInput
+  IsActive: ModelStringInput
+  shiftIds: ModelStringInput
+  userId: ModelStringInput
+  latitude: ModelStringInput
+  longitude: ModelStringInput
+  employeeId: ModelStringInput
+  and: [ModelTheStaffConditionInput]
+  or: [ModelTheStaffConditionInput]
+  not: ModelTheStaffConditionInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+}
+
+input CreateTheStaffInput {
+  id: ID
+  name: String
+  phoneNumber: String
+  email: String
+  DOB: String
+  photourl: String
+  isBiomatritcs: String
+  profileStatus: String
+  Location: String
+  IsActive: String
+  shiftIds: [String]
+  userId: String
+  latitude: String
+  longitude: String
+  employeeId: String
+}
+
+input UpdateTheStaffInput {
+  id: ID!
+  name: String
+  phoneNumber: String
+  email: String
+  DOB: String
+  photourl: String
+  isBiomatritcs: String
+  profileStatus: String
+  Location: String
+  IsActive: String
+  shiftIds: [String]
+  userId: String
+  latitude: String
+  longitude: String
+  employeeId: String
+}
+
+input DeleteTheStaffInput {
+  id: ID!
+}
+
+input ModelSubscriptionTheStaffFilterInput {
+  id: ModelSubscriptionIDInput
+  name: ModelSubscriptionStringInput
+  phoneNumber: ModelSubscriptionStringInput
+  email: ModelSubscriptionStringInput
+  DOB: ModelSubscriptionStringInput
+  photourl: ModelSubscriptionStringInput
+  isBiomatritcs: ModelSubscriptionStringInput
+  profileStatus: ModelSubscriptionStringInput
+  Location: ModelSubscriptionStringInput
+  IsActive: ModelSubscriptionStringInput
+  shiftIds: ModelSubscriptionStringInput
+  userId: ModelSubscriptionStringInput
+  latitude: ModelSubscriptionStringInput
+  longitude: ModelSubscriptionStringInput
+  employeeId: ModelSubscriptionStringInput
+  createdAt: ModelSubscriptionStringInput
+  updatedAt: ModelSubscriptionStringInput
+  and: [ModelSubscriptionTheStaffFilterInput]
+  or: [ModelSubscriptionTheStaffFilterInput]
+}
+
+type ModelTheAdminStaffUserConnection @aws_api_key @aws_iam {
+  items: [TheAdminStaffUser]!
+  nextToken: String
+}
+
+input ModelTheAdminStaffUserFilterInput {
+  id: ModelIDInput
+  name: ModelStringInput
+  phoneNumber: ModelStringInput
+  email: ModelStringInput
+  userType: ModelStringInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+  and: [ModelTheAdminStaffUserFilterInput]
+  or: [ModelTheAdminStaffUserFilterInput]
+  not: ModelTheAdminStaffUserFilterInput
+}
+
+input ModelTheAdminStaffUserConditionInput {
+  name: ModelStringInput
+  phoneNumber: ModelStringInput
+  email: ModelStringInput
+  userType: ModelStringInput
+  and: [ModelTheAdminStaffUserConditionInput]
+  or: [ModelTheAdminStaffUserConditionInput]
+  not: ModelTheAdminStaffUserConditionInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+}
+
+input CreateTheAdminStaffUserInput {
+  id: ID
+  name: String
+  phoneNumber: String
+  email: String
+  userType: String
+}
+
+input UpdateTheAdminStaffUserInput {
+  id: ID!
+  name: String
+  phoneNumber: String
+  email: String
+  userType: String
+}
+
+input DeleteTheAdminStaffUserInput {
+  id: ID!
+}
+
+input ModelSubscriptionTheAdminStaffUserFilterInput {
+  id: ModelSubscriptionIDInput
+  name: ModelSubscriptionStringInput
+  phoneNumber: ModelSubscriptionStringInput
+  email: ModelSubscriptionStringInput
+  userType: ModelSubscriptionStringInput
+  createdAt: ModelSubscriptionStringInput
+  updatedAt: ModelSubscriptionStringInput
+  and: [ModelSubscriptionTheAdminStaffUserFilterInput]
+  or: [ModelSubscriptionTheAdminStaffUserFilterInput]
+}
