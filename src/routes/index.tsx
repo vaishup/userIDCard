@@ -19,7 +19,7 @@ const MapScreen = lazy(() => import('../pages/MapScreen'));
 
 const coreRoutes = [
   {
-    path: '/dashboard',
+    path: '/dashboard/:id',
     title: 'Dashboard',
     component: Dashboard,
   },
