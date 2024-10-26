@@ -126,46 +126,48 @@ const ECommerce: React.FC = () => {
               </h3>
             </div>
 
-            <div className="w-full">
-              <div className="flex flex-row items-center sm:items-start p-3">
+            <div className="w-full h-full flex flex-col items-start justify-start">
+              <div className="flex flex-row items-center p-3">
                 <h4 className="font-semibold text-black dark:text-white">
-                  Employee ID
+                  Employee ID :-
                 </h4>
-                <span className="font-regular text-black dark:text-gray-400 sm:ml-4">
+                <span className="font-regular text-black dark:text-gray-400 ml-4">
                   {formData.employeeId}
                 </span>
               </div>
-              <div className="flex flex-row items-center sm:items-start p-3">
+
+              <div className="flex flex-row items-center p-3">
                 <h4 className="font-semibold text-black dark:text-white">
-                  Email
+                  Email :-
                 </h4>
-                <span className="font-regular text-black dark:text-gray-400 sm:ml-4">
+                <span className="font-regular text-black dark:text-gray-400 ml-4">
                   {formData.email}
                 </span>
               </div>
-              <div className="flex flex-row items-center sm:items-start p-3">
+
+              <div className="flex flex-row items-center p-3">
                 <h4 className="font-semibold text-black dark:text-white">
-                  Phone Number
+                  Phone Number :-
                 </h4>
-                <span className="font-regular text-black dark:text-gray-400 sm:ml-4">
+                <span className="font-regular text-black dark:text-gray-400 ml-4">
                   {formData.phoneNumber}
                 </span>
               </div>
-              <div className="flex flex-row items-center sm:items-start p-3">
+
+              <div className="flex flex-row items-center p-3">
                 <h4 className="font-semibold text-black dark:text-white">
-                  DOB
+                  DOB :-
                 </h4>
-                <span className="font-regular text-black dark:text-gray-400 sm:ml-4">
-                  {" "}
+                <span className="font-regular text-black dark:text-gray-400 ml-4">
                   {formData.dob}
                 </span>
               </div>
-              <div className="flex flex-row items-center sm:items-start p-3">
+
+              <div className="flex flex-row items-center p-3">
                 <h4 className="font-semibold text-black dark:text-white">
-                  Profile Status
+                  Profile Status :-
                 </h4>
-                <span className="font-regular text-black dark:text-gray-400 sm:ml-4">
-                  {" "}
+                <span className="font-regular text-black dark:text-gray-400 ml-4">
                   {formData.status}
                 </span>
               </div>
