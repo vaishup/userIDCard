@@ -132,7 +132,7 @@ const ECommerce: React.FC = () => {
                   Employee ID :-
                 </h4>
                 <span className="font-regular text-black dark:text-gray-400 ml-4">
-                  {formData.employeeId}
+                {formData.employeeId ? formData.employeeId : '0'}
                 </span>
               </div>
 
