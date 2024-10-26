@@ -130,7 +130,7 @@ const ECommerce: React.FC = () => {
                   Employee ID
                 </h4>
                 <span className="font-regular text-black dark:text-gray-400 sm:ml-4">
-                  {'formData.employeeId'}
+                  {formData.employeeId}
                 </span>
               </div>
               <div className="flex flex-row items-center sm:items-start p-3">
@@ -138,7 +138,7 @@ const ECommerce: React.FC = () => {
                   Email
                 </h4>
                 <span className="font-regular text-black dark:text-gray-400 sm:ml-4">
-                  {'formData.email'}
+                  {formData.email}
                 </span>
               </div>
               <div className="flex flex-col items-center sm:items-start p-3">
