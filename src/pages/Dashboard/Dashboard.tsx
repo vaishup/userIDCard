@@ -23,6 +23,17 @@ const ECommerce: React.FC = () => {
     status: "",
     dob: "",
   });
+
+  const [accessGranted, setAccessGranted] = useState(false);
+  const [inputPassword, setInputPassword] = useState("");
+
+  const handlePasswordSubmit = () => {
+    if (inputPassword === STATIC_PASSWORD) {
+      setAccessGranted(true);
+    } else {
+      alert("Incorrect password. Please try again.");
+    }
+  };
   useEffect(() => {
     if (id) {
       const fetchStaffData = async () => {
@@ -57,6 +68,7 @@ const ECommerce: React.FC = () => {
     }
   }, [id]);
   const [fileUri, setFileUri] = useState<string | null>(null);
+
   const [prevFileUri, setPrevFileUri] = useState<string | null>(null);
 
   const downloadFromS3 = async ({
@@ -86,6 +98,8 @@ const ECommerce: React.FC = () => {
       console.log("Error downloading from S3 ", Error);
     }
   };
+
+
   useEffect(() => {
     const downloadFile = async () => {
       await downloadFromS3({
@@ -99,8 +113,30 @@ const ECommerce: React.FC = () => {
       });
       //setIsLoading(false);
     };
-    downloadFile();
-  }, []);
+    if (accessGranted) downloadFile();
+  }, [accessGranted]);
+
+  if (!accessGranted) {
+    // Render password prompt if access is not granted
+    return (
+      <div className="flex flex-col items-center justify-center h-screen bg-gray-100 dark:bg-gray-900">
+        <img src={Logo} alt="Logo" width={60} className="mb-6" />
+        <h2 className="text-xl font-bold mb-4 text-black dark:text-white">Enter Password</h2>
+        <input
+          type="password"
+          value={inputPassword}
+          onChange={(e) => setInputPassword(e.target.value)}
+          className="p-2 border border-gray-300 rounded mb-4"
+        />
+        <button
+          onClick={handlePasswordSubmit}
+          className="px-4 py-2 bg-blue-500 text-white rounded"
+        >
+          Submit
+        </button>
+      </div>
+    );
+  }
   return (
     <>
       <>
